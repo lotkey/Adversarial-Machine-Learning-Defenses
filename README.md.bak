@@ -50,7 +50,39 @@ Instructions are found below. The files are found in this repository at:
  - [data_loader.ipynb](./data_loader.ipynb)
  - [BinaryInputDetectionDefense.ipynb](./BinaryInputDetectionDefense.ipynb)
  - [AdversarialTrainingDefense.ipynb](./AdversarialTrainingDefense.ipynb)
+ 
+GitHub often has issues with Jupyter notebooks. If this is the case, you can view the notebooks here as well:
+ - [data_loader.ipynb](https://nbviewer.org/github/lotkey/Adversarial-Machine-Learning-Defenses/blob/main/AdversarialTrainingDefense.ipynb)
+ - [BinaryInputDetectionDefense](https://nbviewer.org/github/lotkey/Adversarial-Machine-Learning-Defenses/blob/main/BinaryInputDetectionDefense.ipynb)
+ - [AdversarialTrainingDefense.ipynb](https://nbviewer.org/github/lotkey/Adversarial-Machine-Learning-Defenses/blob/main/AdversarialTrainingDefense.ipynb)
+
+If you are using Google Colab you will not need to download any libraries, the notebooks will take care of that for you. If you are not using Google Colab, you will need to download all of the libraries mentioned above.  
+
+There is a cell for mounting your Google Drive. This only works on Google Colab. If you are not using Google Colab, do not run the cell. It is the first cell in each notebook.  
+
+All the folders in the paths specified by you must already exist. The notebooks do not create folders that do not exist.  
 
 ## data_loader.ipynb
 
 This notebook loads the LFW dataset, normalizes it, and saves separate files for training, testing, and validation data.  
+
+Download the (LFW)](http://vis-www.cs.umass.edu/lfw/) to some path **PATH**. Set the variables:
+- **DATA_DIR** to **PATH**
+- **PICKLED_DATA_PATH** to the path where you would like to save the pickled (via the pickle library) data
+
+Make sure **PATH** contains the folders **Test**, **Train**, and **Validation**. Next, run the notebook. It will preprocess the data and export it to the path you supplied.  
+
+## BinaryInputDetectionDefense.ipynb
+
+This notebook:
+- loads the processed LFW dataset
+- trains a VGG16 classifier on it
+- attacks the classifier using FGSM, PGD, and Deepfool attacks
+- implements a binary classification defense
+
+You need to set the following variables:
+- **DATA_PATH** to the same path as **PICKLED_DATA_PATH** in data_loader.ipynb
+- **NAME_LIST_PATH** to the path of name_list.csv in the LFW dataset
+
+You need to rest of the paths in the **Setting paths/directories/variables** cell to your preference.
+
