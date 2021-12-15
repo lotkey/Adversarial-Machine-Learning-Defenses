@@ -13,7 +13,7 @@ The code does the following:
    - Implements a binary input detection defense against the attacks
  - AdversarialTrainingDefense.ipynb...
    - Implements an adversarial training defense against the attacks
-   - Attacks an image to fool the [clarifai celebrity identifier](https://www.clarifai.com/models/celebrity-face-recognition)
+   - Attacks an image to fool the [Clarifai celebrity identifier](https://www.clarifai.com/models/celebrity-face-recognition)
 
 ## Prerequisites
  
@@ -37,7 +37,7 @@ The dataset used is the [Labeled Faces in the Wild (LFW)](http://vis-www.cs.umas
 
 ### Clarifai
 
-The [clarifai celebrity identifier](https://www.clarifai.com/models/celebrity-face-recognition) is used in AdversarialTrainingDefense.ipynb.  
+The [Clarifai celebrity identifier](https://www.clarifai.com/models/celebrity-face-recognition) is used in AdversarialTrainingDefense.ipynb.  
 
 ## How to use the repository
 
@@ -66,7 +66,7 @@ All the folders in the paths specified by you must already exist. The notebooks 
 
 This notebook loads the LFW dataset, normalizes it, and saves separate files for training, testing, and validation data.  
 
-Download the (LFW)](http://vis-www.cs.umass.edu/lfw/) to some path **PATH**. Set the variables:
+Download the [LFW](http://vis-www.cs.umass.edu/lfw/) dataset to some path **PATH**. Set the variables:
 - **DATA_DIR** to **PATH**
 - **PICKLED_DATA_PATH** to the path where you would like to save the pickled (via the pickle library) data
 
@@ -79,10 +79,33 @@ This notebook:
 - trains a VGG16 classifier on it
 - attacks the classifier using FGSM, PGD, and Deepfool attacks
 - implements a binary classification defense
+- print out reports along the way
 
 You need to set the following variables:
 - **DATA_PATH** to the same path as **PICKLED_DATA_PATH** in data_loader.ipynb
 - **NAME_LIST_PATH** to the path of name_list.csv in the LFW dataset
 
-You need to rest of the paths in the **Setting paths/directories/variables** cell to your preference.
+You need to set the rest of the paths in the **Setting paths/directories/variables** cell to your preference.
 
+Run the notebook and look at the reports.
+
+## AdversarialTrainingDefense.ipynb
+
+This notebook:
+- loads the pretrained VGG16 classifier and attacks from BinaryInputDetectionDefense.ipynb
+- adversarially trains the model using ART
+- compares the performance of the undefended and defended model
+- uses a binary search to find the best attack with the least amount of perturbation to fool the Clarifai model
+
+You need to set the following variables:
+- **DATA_PATH** to the same path as **PICKLED_DATA_PATH** in data_loader.ipynb
+- **NAME_LIST_PATH** to the path of name_list.csv in the LFW dataset
+- **VGGNET_PATH** to the same path as it is in BinaryInputDetectionDefense.ipynb
+- **ADV_ATTACK_INDICES_PATH** to same path as it is in BinaryInputDetectionDefense.ipynb
+- **FGSM_ATTACK_PATH** to the same path as it is in BinaryInputDetectionDefense.ipynb
+- **PGD_ATTACK_PATH** to the same path as it is in BinaryInputDetectionDefense.ipynb
+- **DEEPFOOL_ATTACK_PATH** to the same path as it is in BinaryInputDetectionDefense.ipynb
+
+You need to set the rest of the paths in the **Setting paths/directories/variables** cell to your preference.
+
+Run the notebook and look at the reports. The last part, the binary search, is interactive. The notebook will generate an attack to the path the user specified. The user must then download the image, upload it to [Clarifai model](https://www.clarifai.com/models/celebrity-face-recognition) and report back to the notebook several times. Then the notebook will save the best attack and print a report.  
