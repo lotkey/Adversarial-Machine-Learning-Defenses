@@ -24,6 +24,8 @@ The scripts are in the Jupyter notebook format. The advised way to run the scrip
  - numpy
  - pandas
  - PIL (Pillow)
+ - pickle
+ - tabulate
  - matplotlib
  
 The library used for the adversarial attacks and training is the [Adversarial Robustness Toolbox (ART)](https://adversarial-robustness-toolbox.readthedocs.io/en/latest/). It is not included in Google Colab, so the scripts automatically install it.  
@@ -32,3 +34,23 @@ The library used for the adversarial attacks and training is the [Adversarial Ro
 ### Dataset
 
 The dataset used is the [Labeled Faces in the Wild (LFW)](http://vis-www.cs.umass.edu/lfw/) dataset.  
+
+### Clarifai
+
+The [clarifai celebrity identifier](https://www.clarifai.com/models/celebrity-face-recognition) is used in AdversarialTrainingDefense.ipynb.  
+
+## How to use the repository
+
+Follow the instrunctions for the notebooks in this order:
+ - data_loader.ipynb
+ - BinaryInputDetectionDefense.ipynb
+ - AdversarialTrainingDefense.ipynb
+ 
+Instructions are found below. The files are found in this repository at:
+ - [data_loader.ipynb](./data_loader.ipynb)
+ - [BinaryInputDetectionDefense.ipynb](./BinaryInputDetectionDefense.ipynb)
+ - [AdversarialTrainingDefense.ipynb](./AdversarialTrainingDefense.ipynb)
+
+## data_loader.ipynb
+
+This notebook loads the LFW dataset, normalizes it, and saves separate files for training, testing, and validation data.  
