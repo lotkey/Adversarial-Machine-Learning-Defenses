@@ -64,7 +64,7 @@ All the folders in the paths specified by you must already exist. The notebooks 
 
 ## data_loader.ipynb
 
-This notebook loads the LFW dataset, normalizes it, and saves separate files for training, testing, and validation data.  
+This notebook loads the LFW dataset, normalizes it, and saves separate files for training, testing, and validation data. To normalize the data, this notebook loads the images as integer arrays and scales them into float arrays with values in the range [0.0-1.0].   
 
 Download the [LFW](http://vis-www.cs.umass.edu/lfw/) dataset to some path **PATH**. Set the variables:
 - **DATA_DIR** to **PATH**
@@ -77,8 +77,8 @@ Make sure **PATH** contains the folders **Test**, **Train**, and **Validation**.
 This notebook:
 - loads the processed LFW dataset
 - trains a VGG16 classifier on it
-- attacks the classifier using Fast Gradient Sign Method, Projected Gradient Descent, and Deepfool attacks
-- implements a binary classification defense
+- attacks the classifier using Fast Gradient Sign Method, Projected Gradient Descent, Deepfool, and Pixel (bonus!) attacks from ART and compare their effectiveness
+- implements a binary classification defense against each separate attack and compares their performance against other attacks to show their transferability
 - print out reports along the way
 
 You need to set the following variables:
@@ -93,9 +93,10 @@ Run the notebook and look at the reports.
 
 This notebook:
 - loads the pretrained VGG16 classifier and attacks from BinaryInputDetectionDefense.ipynb
-- adversarially trains the model using ART
-- compares the performance of the undefended and defended model
+- adversarially trains the model using ART on the PGD attack 
+- compares the performance of the undefended and defended model on various other attacks to view transferability
 - uses a binary search to find the best attack with the least amount of perturbation to fool the Clarifai model
+- print out reports along the way
 
 You need to set the following variables:
 - **DATA_PATH** to the same path as **PICKLED_DATA_PATH** in data_loader.ipynb
