@@ -38,6 +38,8 @@ The dataset used is the [Labeled Faces in the Wild (LFW)](http://vis-www.cs.umas
 - 1049 testing images
 - 1021 validation images  
 
+The images were obtained from [this repository](https://github.com/telecombcn-dl/2018-dlai-team4). This is a subset of the original LFW dataset, called "optimized for accuracy." The subset only contains celebrities with more than 20 images in LFW. All images are preprocessed to extract only the face from the whole image.
+
 ### Clarifai
 
 The [Clarifai celebrity identifier](https://www.clarifai.com/models/celebrity-face-recognition) is used in AdversarialTrainingDefense.ipynb.  
