@@ -33,7 +33,10 @@ The library used for the adversarial attacks and training is the [Adversarial Ro
 
 ### Dataset
 
-The dataset used is the [Labeled Faces in the Wild (LFW)](http://vis-www.cs.umass.edu/lfw/) dataset.  
+The dataset used is the [Labeled Faces in the Wild (LFW)](http://vis-www.cs.umass.edu/lfw/) dataset. The images are 100x100. There are:  
+- 3043 training images
+- 1049 testing images
+- 1021 validation images  
 
 ### Clarifai
 
